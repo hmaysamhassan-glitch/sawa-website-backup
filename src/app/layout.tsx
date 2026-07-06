@@ -26,7 +26,7 @@ const inter = Inter({
 // ── SEO Metadata ────────────────────────────────────────────
 export const metadata: Metadata = {
   title: {
-    default: "Sawa — Email Revenue Partner for Ecommerce Brands",
+    default: "Sawa — Email Revenue Partner for Influencers and Creators",
     template: "%s | Sawa",
   },
   description:
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://sawa.co",
     siteName: "Sawa",
-    title: "Sawa — Email Revenue Partner for Ecommerce Brands",
+    title: "Sawa — Email Revenue Partner for Influencers and Creators",
     description:
       "Your existing customers are your next revenue channel. Sawa builds the email programs that make that real.",
     images: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sawa — Email Revenue Partner for Ecommerce Brands",
+    title: "Sawa — Email Revenue Partner for Influencers and Creators",
     description:
       "Your existing customers are your next revenue channel. Sawa builds the email programs that make that real.",
     images: ["/og-image.png"],
