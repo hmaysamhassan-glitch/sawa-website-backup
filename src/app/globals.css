@@ -3,44 +3,63 @@
 /* ============================================================
    SAWA — DESIGN SYSTEM TOKENS
    All design decisions live here. One source of truth.
+
+   Visual DNA:
+   - Warm off-white / paper canvas
+   - Near-black typography
+   - Stone accent (restrained — status, active, CTA only)
+   - Fine hairline borders
+   - Grid / system linework
+   - Monospace technical metadata
+   - Two voices: Inter (editorial) + Geist Mono (system)
    ============================================================ */
 
 @theme {
   /* ── Color Palette ──────────────────────────────────────── */
 
-  /* Foundation */
-  --color-ink:      #0B1E3D; /* Primary text — deep navy */
-  --color-chalk:    #F0F5FF; /* Page background — icy blue-white */
-  --color-stone:    #6485A8; /* Secondary text — steel blue */
-  --color-deep:     #0F2250; /* Elevated surfaces */
-  --color-ink-mid:  #142860; /* Interactive backgrounds */
-  --color-border:   rgba(11,30,61,0.1); /* Borders and dividers */
-  --color-hover:    rgba(11,30,61,0.06); /* Hover state */
-  --color-icon:     #8AAAC8; /* Non-active icon color */
+  /* Foundation — warm neutral paper canvas */
+  --color-canvas:   #F4F7FA;  /* Page background — blue off-white */
+  --color-paper:    #EAF4FB;  /* Elevated/inset surfaces */
+  --color-ink:      #0A0A0A;  /* Primary text — near black */
+  --color-ink-mid:  #3D3D3A;  /* Secondary text — warm dark grey */
+  --color-ink-dim:  #6B6B66;  /* Muted text — warm grey */
+  --color-ink-faint:#A8A89E;  /* Placeholder / disabled */
+  --color-border:   rgba(10,10,10,0.09); /* Hairline borders */
+  --color-border-mid: rgba(10,10,10,0.15); /* Slightly stronger borders */
+  --color-hover:    rgba(10,10,10,0.04);  /* Hover state */
 
-  /* Signal — the accent. Sky cyan. Techy precision. */
-  --color-signal:     #38BDF8; /* Sky blue — tech accent */
-  --color-signal-dim: #0EA5E9; /* Hover state */
+  /* Signal — the accent. Warm stone. Restrained. */
+  /* Used ONLY for: status indicators, active states, CTA backgrounds */
+  --color-signal:     #B8A48E; /* Stone — warm accent / active */
+  --color-signal-dim: #16A34A; /* Hover / pressed */
+  --color-signal-bg:  rgba(34,197,94,0.08);  /* Signal tint background */
 
-  /* Royal — primary CTA blue */
-  --color-royal:    #1B48C4;
-  --color-royal-dim:#1539A3;
+  /* Dark surface — for final CTA block */
+  --color-dark:  #0A0A0A;
+  --color-dark-secondary: #1A1A18;
 
-  /* ── shadcn semantic aliases ────────────────────────────── */
-  /* Map shadcn-style tokens onto the Sawa palette so copy-pasted
-     shadcn/ui components (e.g. the-infinite-grid) render on-brand
-     without modification. */
-  --color-background:            #FFFFFF;            /* page surface */
-  --color-foreground:            var(--color-ink);   /* primary text */
-  --color-muted:                 #E8F0FF;            /* muted surface */
-  --color-muted-foreground:      var(--color-stone); /* secondary text */
-  --color-primary:               var(--color-royal); /* primary CTA */
-  --color-primary-foreground:    #FFFFFF;
-  --color-secondary:             #E8F0FF;            /* secondary surface */
-  --color-secondary-foreground:  var(--color-ink);
+  /* shadcn semantic aliases */
+  --color-background:           var(--color-canvas);
+  --color-foreground:           var(--color-ink);
+  --color-muted:                var(--color-paper);
+  --color-muted-foreground:     var(--color-ink-dim);
+  --color-primary:              var(--color-ink);
+  --color-primary-foreground:   #FFFFFF;
+  --color-secondary:            var(--color-paper);
+  --color-secondary-foreground: var(--color-ink);
+  --color-border-default:       var(--color-border);
 
-  /* ── Typography ─────────────────────────────────────────── */
+  /* ── Typography — Two voices ─────────────────────────────── */
+
+  /* VOICE 01 — EDITORIAL (Inter) */
+  /* H1, section statements, major arguments, emotional copy */
   --font-display: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  /* VOICE 02 — SYSTEM (Geist Mono) */
+  /* Section indices, metadata, status, node labels, tool output */
+  --font-mono: var(--font-geist-mono), 'Geist Mono', 'ui-monospace', monospace;
+
+  /* VOICE UI — BODY (Geist) */
   --font-sans: var(--font-geist), 'Geist', system-ui, sans-serif;
 
   /* ── Type Scale ─────────────────────────────────────────── */
@@ -58,9 +77,9 @@
   /* ── Letter Spacing ─────────────────────────────────────── */
   --tracking-display: -0.04em;
   --tracking-heading: -0.025em;
-  --tracking-sub:     -0.015em;
   --tracking-body:     0em;
-  --tracking-caption:  0.08em;
+  --tracking-mono:     -0.02em;
+  --tracking-label:    0.07em;
 
   /* ── Line Heights ───────────────────────────────────────── */
   --leading-display: 1.05;
@@ -82,20 +101,19 @@
   --spacing-32:  8rem;
   --spacing-40:  10rem;
 
-  /* ── Border Radius ──────────────────────────────────────── */
+  /* ── Border Radius — restrained ────────────────────────── */
+  --radius-xs:   2px;
   --radius-sm:   4px;
-  --radius-md:   8px;
-  --radius-lg:   12px;
-  --radius-xl:   16px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
   --radius-pill: 9999px;
 
   /* ── Transitions ────────────────────────────────────────── */
   --ease-expo-out:   cubic-bezier(0.16, 1, 0.3, 1);
   --ease-enter:      cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-exit:       cubic-bezier(0.4, 0, 1, 1);
 
   --duration-micro:      100ms;
-  --duration-fast:       200ms;
+  --duration-fast:       180ms;
   --duration-standard:   300ms;
   --duration-deliberate: 500ms;
   --duration-slow:       700ms;
@@ -117,164 +135,228 @@ html {
 }
 
 body {
-  background-color: #FFFFFF;
-  color: #0B1E3D;
+  background-color: #F4F7FA;
+  color: #0A0A0A;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.65;
   overflow-x: hidden;
 }
 
-/* Film grain overlay */
+/* Subtle film grain — preserves the editorial-print texture */
 html::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: overlay;
+  mix-blend-mode: multiply;
 }
 
-/* Focus visible */
+/* Focus ring */
 :focus-visible {
-  outline: 2px solid #38BDF8;
+  outline: 2px solid #B8A48E;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(34,197,94,0.18);
+  color: #0A0A0A;
 }
 
 /* ============================================================
    TYPOGRAPHY UTILITIES
    ============================================================ */
 
+/* VOICE 01 — EDITORIAL */
 .font-display {
   font-family: var(--font-display);
 }
 
 .text-display-1 {
   font-size: clamp(2.75rem, 6vw, 5rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  line-height: 1.06;
+  letter-spacing: -0.038em;
   font-weight: 700;
 }
 
 .text-display-2 {
   font-size: clamp(2rem, 4.5vw, 4rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
   font-weight: 700;
 }
 
 .text-display-3 {
   font-size: clamp(1.75rem, 3vw, 3rem);
-  line-height: 1.12;
+  line-height: 1.1;
   letter-spacing: -0.025em;
   font-weight: 600;
 }
 
 .text-heading-1 {
   font-size: clamp(1.75rem, 3.5vw, 3rem);
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.025em;
   font-weight: 600;
 }
 
 .text-heading-2 {
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: -0.02em;
   font-weight: 600;
 }
 
-.text-heading-3 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  font-weight: 500;
-}
-
 .text-body-lg {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
-  line-height: 1.7;
+  line-height: 1.72;
   letter-spacing: 0em;
 }
 
-.text-caption-label {
+/* VOICE 02 — SYSTEM (monospace) */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.system-label {
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   line-height: 1.5;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A8A89E;
+  font-weight: 400;
 }
 
 /* ============================================================
    COMPONENT PRIMITIVES
    ============================================================ */
 
-/* Primary button — royal blue */
-.btn-signal {
+/* Primary CTA — ink */
+.btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #1B48C4;
-  color: #FFFFFF;
+  padding: 0.8125rem 1.625rem;
+  background-color: #1C1814;
+  color: #EDE8DF;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
   white-space: nowrap;
+  font-family: var(--font-sans);
+  text-decoration: none;
 }
 
-.btn-signal:hover {
-  background-color: #1539A3;
+.btn-primary:hover {
+  background-color: #0A0A0A;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(27,72,196,0.3);
+  box-shadow: 0 6px 20px rgba(28,24,20,0.22);
 }
 
-.btn-signal:active {
-  transform: translateY(0);
-}
+.btn-primary:active { transform: translateY(0); }
 
-/* Ghost button */
+/* Ghost button — hairline border */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8125rem 1.625rem;
   background-color: transparent;
-  color: #0B1E3D;
+  color: #0A0A0A;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(11, 30, 61, 0.2);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(10,10,10,0.18);
+  font-family: var(--font-sans);
+  text-decoration: none;
 }
 
 .btn-ghost:hover {
-  border-color: #1B48C4;
-  background-color: rgba(27, 72, 196, 0.06);
-  color: #1B48C4;
+  border-color: #0A0A0A;
+  background-color: rgba(10,10,10,0.04);
 }
 
-/* Surface card */
-.card-surface {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(11, 30, 61, 0.08);
-  border-radius: 12px;
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+/* Ink button — near-black for nav */
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  font-family: var(--font-sans);
+  text-decoration: none;
 }
 
-.card-surface:hover {
-  border-color: rgba(27, 72, 196, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(11, 30, 61, 0.08);
+.btn-ink:hover {
+  background-color: #1A1A18;
+}
+
+/* Signal status dot */
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #B8A48E;
+}
+
+.status-dot-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #B8A48E;
+  position: relative;
+}
+
+.status-dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(34,197,94,0.4);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+
+/* Hairline rules */
+.rule {
+  height: 1px;
+  background-color: rgba(10,10,10,0.09);
+  border: none;
 }
 
 /* Section label */
@@ -282,55 +364,31 @@ html::before {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #6485A8;
+  color: #6B6B66;
 }
 
 .section-label::before {
   content: '';
   display: block;
-  width: 16px;
+  width: 14px;
   height: 1px;
-  background-color: #6485A8;
+  background-color: #A8A89E;
   flex-shrink: 0;
 }
 
-/* Section label — inverted (for dark navy sections) */
-.section-label-light {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(240,246,255,0.5);
-}
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
 
-.section-label-light::before {
-  content: '';
-  display: block;
-  width: 16px;
-  height: 1px;
-  background-color: rgba(240,246,255,0.4);
-  flex-shrink: 0;
-}
-
-/* Horizontal rule */
-.rule {
-  height: 1px;
-  background-color: rgba(11, 30, 61, 0.1);
-  border: none;
-}
-
-/* Selection — sky blue */
-::selection {
-  background-color: #38BDF8;
-  color: #0B1E3D;
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F5F4F1; }
+::-webkit-scrollbar-thumb { background: #A8A89E; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #6B6B66; }
 
 /* ============================================================
    REDUCED MOTION
@@ -342,29 +400,5 @@ html::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  html::before {
-    display: none;
-  }
-}
-
-/* ============================================================
-   SCROLLBAR STYLING
-   ============================================================ */
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #E8F0FF;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8AAAC8;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #6485A8;
+  html::before { display: none; }
 }

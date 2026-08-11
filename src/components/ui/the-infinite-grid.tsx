@@ -128,11 +128,21 @@ export const InfiniteGridBackground = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
-  };
+  // Track the pointer at the window level so the cursor-reveal follows
+  // the cursor across the whole page. The layer is pointer-events-none
+  // (see below), so a window listener is how it still "sees" the mouse.
+  useEffect(() => {
+    if (!interactive) return;
+    const handle = (e: MouseEvent) => {
+      const el = containerRef.current;
+      if (!el) return;
+      const { left, top } = el.getBoundingClientRect();
+      mouseX.set(e.clientX - left);
+      mouseY.set(e.clientY - top);
+    };
+    window.addEventListener("mousemove", handle);
+    return () => window.removeEventListener("mousemove", handle);
+  }, [interactive, mouseX, mouseY]);
 
   const gridOffsetX = useMotionValue(0);
   const gridOffsetY = useMotionValue(0);
@@ -151,15 +161,14 @@ export const InfiniteGridBackground = ({
   return (
     <div
       ref={containerRef}
-      onMouseMove={interactive ? handleMouseMove : undefined}
-      className={cn("absolute inset-0 overflow-hidden", className)}
+      className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}
     >
-      <div className="absolute inset-0 z-0 opacity-[0.05]">
+      <div className="absolute inset-0 z-0 opacity-[0.022]">
         <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
       </div>
       {interactive && (
         <motion.div
-          className="absolute inset-0 z-0 opacity-40"
+          className="absolute inset-0 z-0 opacity-[0.18]"
           style={{ maskImage, WebkitMaskImage: maskImage }}
         >
           <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
@@ -167,9 +176,9 @@ export const InfiniteGridBackground = ({
       )}
 
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute right-[-20%] top-[-20%] w-[40%] h-[40%] rounded-full bg-signal/20 blur-[120px]" />
-        <div className="absolute right-[10%] top-[-10%] w-[20%] h-[20%] rounded-full bg-primary/25 blur-[100px]" />
-        <div className="absolute left-[-10%] bottom-[-20%] w-[40%] h-[40%] rounded-full bg-blue-500/25 blur-[120px]" />
+        <div className="absolute right-[-20%] top-[-20%] w-[40%] h-[40%] rounded-full bg-signal/10 blur-[120px]" />
+        <div className="absolute right-[10%] top-[-10%] w-[20%] h-[20%] rounded-full bg-primary/10 blur-[100px]" />
+        <div className="absolute left-[-10%] bottom-[-20%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
     </div>
   );

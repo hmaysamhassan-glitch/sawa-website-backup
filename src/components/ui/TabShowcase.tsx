@@ -93,7 +93,7 @@ const SUBS = [
   { initials: "MP", name: "m****@proton.me" },
 ];
 
-function GrowPanel({ active }: { active: boolean }) {
+export function GrowPanel({ active }: { active: boolean }) {
   const count = useCounter(20000, active, 2000);
 
   return (
@@ -166,7 +166,7 @@ function GrowPanel({ active }: { active: boolean }) {
 const GRID = Array.from({ length: 60 });
 const LIT_TARGET = Math.round(60 * 0.55);
 
-function NewsletterPanel({ active }: { active: boolean }) {
+export function NewsletterPanel({ active }: { active: boolean }) {
   const [litCount, setLitCount] = useState(0);
   const openRate  = useCounter(55, active, 1400);
   const clickRate = useCounter(4,  active, 1400);
@@ -244,7 +244,7 @@ const TOASTS = [
 ];
 const BARS = [20, 35, 28, 48, 62, 55, 78, 70, 90, 100];
 
-function LaunchPanel({ active }: { active: boolean }) {
+export function LaunchPanel({ active }: { active: boolean }) {
   const rev = useCounter(10000, active, 2000);
   const [toastIdx, setToastIdx] = useState(0);
 
