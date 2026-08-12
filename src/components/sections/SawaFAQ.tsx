@@ -68,7 +68,7 @@ export default function SawaFAQ() {
         }}
       />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px clamp(20px,4vw,48px) 0" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(72px,10vh,96px) clamp(20px,4vw,48px) 0" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
           <span className="section-index">07 / FAQ</span>
           <span style={{ height: 1, flex: 1, background: BORDER, maxWidth: 80 }} />

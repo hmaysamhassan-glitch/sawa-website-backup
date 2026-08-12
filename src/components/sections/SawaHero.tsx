@@ -137,7 +137,8 @@ export default function SawaHero() {
           background: BG,
           display: "flex",
           flexDirection: "column",
-          padding: "clamp(88px,11vh,128px) clamp(20px,4.4vw,60px) clamp(64px,9vh,110px)",
+          alignItems: "center",
+          padding: "clamp(88px,11vh,128px) clamp(20px,4vw,48px) clamp(64px,9vh,110px)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -154,6 +155,7 @@ export default function SawaHero() {
 
         {/* Brand stamp */}
         <div style={{
+          width: "100%", maxWidth: 1200,
           marginBottom: "clamp(20px,3vh,36px)",
           display: "flex", alignItems: "baseline", gap: 14,
         }}>
@@ -184,7 +186,7 @@ export default function SawaHero() {
         <motion.div
           initial={{ opacity: 0 }} animate={play ? { opacity: 1 } : {}}
           transition={{ duration: 0.38, delay: 0.12, ease }}
-          style={{ marginBottom: "clamp(18px,2.5vh,28px)" }}
+          style={{ width: "100%", maxWidth: 1200, marginBottom: "clamp(18px,2.5vh,28px)" }}
         >
           <span style={{
             fontFamily: "var(--font-geist-mono), monospace",
@@ -197,11 +199,12 @@ export default function SawaHero() {
         <div
           className="hero-grid"
           style={{
+            width: "100%",
             display: "grid",
-            gridTemplateColumns: "1.08fr 0.92fr",
-            gap: "clamp(24px,4vw,64px)",
+            gridTemplateColumns: "1.18fr 0.82fr",
+            gap: "clamp(24px,3vw,48px)",
             alignItems: "end",
-            maxWidth: 1340,
+            maxWidth: 1200,
           }}
         >
             <h1 style={{
@@ -322,7 +325,7 @@ export default function SawaHero() {
 
         {/* The journey — full width beneath the headline block */}
         <div style={{
-          maxWidth: 1340, width: "100%",
+          maxWidth: 1200, width: "100%",
           marginTop: "clamp(56px,9vh,120px)",
         }}>
           <AudienceJourney />

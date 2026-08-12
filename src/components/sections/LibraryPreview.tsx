@@ -217,7 +217,7 @@ export default function LibraryPreview() {
         filter: "blur(4px)",
       }} />
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1180, margin: "0 auto", padding: "0 clamp(20px,4vw,52px)" }}>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "0 clamp(20px,4vw,48px)" }}>
 
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
           <span style={{

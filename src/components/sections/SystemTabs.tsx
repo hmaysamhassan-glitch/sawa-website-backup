@@ -225,19 +225,19 @@ export default function SystemTabs() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        style={{ position: "relative" }}
+        style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}
       >
         <div style={{
           fontFamily: "var(--font-geist-mono),monospace",
           fontSize: 9, letterSpacing: "0.13em", textTransform: "uppercase", color: MID,
           display: "flex", alignItems: "center", gap: 12,
-          padding: "0 clamp(20px,4vw,52px)", marginBottom: 40,
+          padding: "0 clamp(20px,4vw,48px)", marginBottom: 40,
         }}>
           03 / SYSTEM
           <div style={{ width: 36, height: 1, background: CB }} />
         </div>
 
-        <div style={{ textAlign: "center", padding: "0 clamp(20px,4vw,52px)" }}>
+        <div style={{ textAlign: "center", padding: "0 clamp(20px,4vw,48px)" }}>
           <h2 style={{
             fontFamily: "var(--font-inter),sans-serif",
             fontSize: "clamp(2.3rem,4.8vw,4.1rem)",
@@ -284,7 +284,7 @@ export default function SystemTabs() {
 
         {/* Big, bold, one stage at a time — cycles with the sphere above it */}
         <div style={{
-          textAlign: "center", padding: "0 clamp(20px,4vw,52px)",
+          textAlign: "center", padding: "0 clamp(20px,4vw,48px)",
           minHeight: "clamp(120px,16vw,160px)",
         }}>
           <AnimatePresence mode="wait">

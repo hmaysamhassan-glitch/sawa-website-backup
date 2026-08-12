@@ -58,6 +58,12 @@ function SawaLogoMark() {
       }}>
         sawa
       </span>
+      {/* Signature arc — echoes the hero wordmark, a quiet brand tie */}
+      <svg width="34" height="8" viewBox="0 0 34 8" fill="none" aria-hidden="true"
+        style={{ marginLeft: 2, marginBottom: 3 }}>
+        <path d="M0 6 Q17 1 33 4.5" stroke={FAINT} strokeOpacity="0.5"
+          strokeWidth="1.4" strokeLinecap="round" />
+      </svg>
     </div>
   );
 }
@@ -68,10 +74,24 @@ export default function SawaFooter() {
       style={{
         background: CANVAS,
         borderTop: `1px solid ${BORDER}`,
+        position: "relative",
+        overflow: "hidden",
       }}
       role="contentinfo"
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px clamp(20px,4vw,48px) 40px" }}>
+      {/* Quiet brand mark — the sawa glyph, whisper-faint, bleeding off the corner */}
+      <div aria-hidden style={{
+        position: "absolute", right: "clamp(-36px,-1vw,-8px)", bottom: "clamp(-48px,-4vw,-20px)",
+        pointerEvents: "none", userSelect: "none", zIndex: 0,
+      }}>
+        <svg width="300" height="200" viewBox="0 0 42 28" fill="none">
+          <circle cx="14" cy="14" r="12" fill={FAINT} opacity="0.12" />
+          <circle cx="28" cy="14" r="12" fill={FAINT} opacity="0.08" />
+          <path d="M21 3.5C25 6.2 25 21.8 21 24.5C17 21.8 17 6.2 21 3.5Z" fill={FAINT} opacity="0.14" />
+        </svg>
+      </div>
+
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "48px clamp(20px,4vw,48px) 40px" }}>
         {/* Main footer grid */}
         <div style={{
           display: "grid",

@@ -336,7 +336,7 @@ export default function OurSolution() {
         filter: "blur(4px)",
       }} />
 
-      <div style={{ position: "relative", maxWidth: 1180, margin: "0 auto", padding: "0 clamp(20px,4vw,52px)" }}>
+      <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", padding: "0 clamp(20px,4vw,48px)" }}>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
